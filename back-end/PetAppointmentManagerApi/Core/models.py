@@ -12,6 +12,7 @@ class Pet(models.Model):
 class Appointment(models.Model):
     date = models.DateField()
     time = models.TimeField()
+    proccedure = models.CharField(max_length=100, default='general')
     priority = models.CharField(max_length=20, default='low')
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE,related_name='appointment')
     
