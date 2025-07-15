@@ -1,7 +1,17 @@
 import './AppointmentCardComponent.css'
+import axios from 'axios'
 
 export default function AppointmentCardComponent(){
 
+    const apiUrl = import.meta.env.VITE_API_URL
+
+    axios.get(`${apiUrl}/appointment`)
+        .then(response => {
+            console.log(response.data)
+        })
+        .catch(err => {
+            console.error(err)
+        })
 
     return(
         <div className="card-container">
