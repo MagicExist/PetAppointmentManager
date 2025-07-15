@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './AppointmentCardComponent.css'
 import axios from 'axios'
 
@@ -5,9 +6,11 @@ export default function AppointmentCardComponent(){
 
     const apiUrl = import.meta.env.VITE_API_URL
 
+    const [appointmentList,setAppointmentList] = useState([])
+
     axios.get(`${apiUrl}/appointment`)
         .then(response => {
-            console.log(response.data)
+            setAppointmentList(response.data)
         })
         .catch(err => {
             console.error(err)
@@ -23,14 +26,17 @@ export default function AppointmentCardComponent(){
                 <p>Proccedure</p>
                 <p>Medic</p>
             </div>
-            <div className="card-body card-alignment">
-                <p>low</p>
-                <p>Max</p>
-                <p>10-07-2025</p>
-                <p>14:00</p>
-                <p>General</p>
-                <p>Johhan</p>
-            </div>
+            {appointmentList.map((appointment,index) => {
+                <div className="card-body card-alignment" key={index}>
+                    <p>{appointment.priority}</p>
+                    <p>{appointment.pet}</p>
+                    <p>{appointment.date}</p>
+                    <p>{appointment.time}</p>
+                    <p>{appointment.proccedure}</p>
+                    <p>{appointment.medic}</p>
+                </div>
+            })}
+            
         </div>
     )
 }
