@@ -1,11 +1,15 @@
-
+import './AppointmentReadView.css'
+import AppointmentCardComponent from '../AppointmentCardComponent/AppointmentCardComponent'
 
 export default function AppointmentReadView(){
 
 
     return (
         <>
-            <h1>Appointments</h1>
+            <div className='container'>
+                <h1>Appointments</h1>
+                <AppointmentCardComponent></AppointmentCardComponent>
+            </div>
         </>
     )
 }
