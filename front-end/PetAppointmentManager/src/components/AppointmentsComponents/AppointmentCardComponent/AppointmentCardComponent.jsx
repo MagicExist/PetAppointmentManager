@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './AppointmentCardComponent.css'
 import axios from 'axios'
 
@@ -8,13 +8,17 @@ export default function AppointmentCardComponent(){
 
     const [appointmentList,setAppointmentList] = useState([])
 
-    axios.get(`${apiUrl}/appointment`)
+    useEffect(()=>{
+        axios.get(`${apiUrl}/appointment`)
         .then(response => {
+            console.log(response.data)
             setAppointmentList(response.data)
         })
         .catch(err => {
             console.error(err)
         })
+    },[])
+    
 
     return(
         <div className="card-container">
@@ -26,7 +30,7 @@ export default function AppointmentCardComponent(){
                 <p>Proccedure</p>
                 <p>Medic</p>
             </div>
-            {appointmentList.map((appointment,index) => {
+            {appointmentList.map((appointment,index) => (
                 <div className="card-body card-alignment" key={index}>
                     <p>{appointment.priority}</p>
                     <p>{appointment.pet}</p>
@@ -35,7 +39,7 @@ export default function AppointmentCardComponent(){
                     <p>{appointment.proccedure}</p>
                     <p>{appointment.medic}</p>
                 </div>
-            })}
+            ))}
             
         </div>
     )
