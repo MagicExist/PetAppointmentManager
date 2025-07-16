@@ -2,7 +2,7 @@
 .card-container{
     display: flex;
     flex-direction: column;
-    background-color: gray;
+    background-color: rgb(26, 26, 27);
     border-radius: 1rem;
     justify-content: center;
 }
