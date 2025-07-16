@@ -6,8 +6,8 @@ export default function AppointmentReadView(){
 
     return (
         <>
-            <div className='container'>
-                <h1>Appointments</h1>
+            <div className='container text-white'>
+                <h1 className='mb-3 mt-3'>Appointments</h1>
                 <AppointmentCardComponent></AppointmentCardComponent>
             </div>
         </>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './AppointmentCardComponent.css'
 import axios from 'axios'
 
@@ -8,34 +8,38 @@ export default function AppointmentCardComponent(){
 
     const [appointmentList,setAppointmentList] = useState([])
 
-    axios.get(`${apiUrl}/appointment`)
+    useEffect(()=>{
+        axios.get(`${apiUrl}/appointment`)
         .then(response => {
+            console.log(response.data)
             setAppointmentList(response.data)
         })
         .catch(err => {
             console.error(err)
         })
+    },[])
+    
 
     return(
         <div className="card-container">
-            <div className="card-header card-alignment">
-                <p>Priority</p>
-                <p>Pet</p>
-                <p>Date</p>
-                <p>Time</p>
-                <p>Proccedure</p>
-                <p>Medic</p>
+            <div className="card-header card-alignment mt-3">
+                <div className='card-alignment-containers'><p>Priority</p></div>
+                <div className='card-alignment-containers'><p>Pet</p></div>
+                <div className='card-alignment-containers'><p>Date</p></div>
+                <div className='card-alignment-containers'><p>Time</p></div>
+                <div className='card-alignment-containers'><p>Proccedure</p></div>
+                <div className='card-alignment-containers'><p>Medic</p></div>
             </div>
-            {appointmentList.map((appointment,index) => {
-                <div className="card-body card-alignment" key={index}>
-                    <p>{appointment.priority}</p>
-                    <p>{appointment.pet}</p>
-                    <p>{appointment.date}</p>
-                    <p>{appointment.time}</p>
-                    <p>{appointment.proccedure}</p>
-                    <p>{appointment.medic}</p>
+            {appointmentList.map((appointment,index) => (
+                <div className="card-body card-alignment mb-3" key={index}>
+                    <div className='card-alignment-containers'><p>{appointment.priority}</p></div>
+                    <div className='card-alignment-containers'><p>{appointment.pet}</p></div>
+                    <div className='card-alignment-containers'><p>{appointment.date}</p></div>
+                    <div className='card-alignment-containers'><p>{appointment.time}</p></div>
+                    <div className='card-alignment-containers'><p>{appointment.proccedure}</p></div>
+                    <div className='card-alignment-containers'><p>{appointment.medic}</p></div>
                 </div>
-            })}
+            ))}
             
         </div>
     )
