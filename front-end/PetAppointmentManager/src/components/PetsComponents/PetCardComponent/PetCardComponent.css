@@ -1,0 +1,27 @@
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(26, 26, 27);
+    border-radius: 1rem;
+    justify-content: center;
+}
+
+.card-alignment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-alignment-containers{
+    width: 33.33%;
+    display: flex;
+    justify-content: center;
+}
+
+.card-body{
+}
+
+.card-header{
+    
+}
