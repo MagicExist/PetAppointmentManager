@@ -9,8 +9,17 @@
 
 .card-alignment{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+}
+
+.card-alignment-containers{
+    width: 16.6%;
+    display: flex;
+    justify-content: center;
+}
+
+.card-body{
 }
 
 .card-header{

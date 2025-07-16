@@ -23,21 +23,21 @@ export default function AppointmentCardComponent(){
     return(
         <div className="card-container">
             <div className="card-header card-alignment">
-                <p>Priority</p>
-                <p>Pet</p>
-                <p>Date</p>
-                <p>Time</p>
-                <p>Proccedure</p>
-                <p>Medic</p>
+                <div className='card-alignment-containers'><p>Priority</p></div>
+                <div className='card-alignment-containers'><p>Pet</p></div>
+                <div className='card-alignment-containers'><p>Date</p></div>
+                <div className='card-alignment-containers'><p>Time</p></div>
+                <div className='card-alignment-containers'><p>Proccedure</p></div>
+                <div className='card-alignment-containers'><p>Medic</p></div>
             </div>
             {appointmentList.map((appointment,index) => (
                 <div className="card-body card-alignment" key={index}>
-                    <p>{appointment.priority}</p>
-                    <p>{appointment.pet}</p>
-                    <p>{appointment.date}</p>
-                    <p>{appointment.time}</p>
-                    <p>{appointment.proccedure}</p>
-                    <p>{appointment.medic}</p>
+                    <div className='card-alignment-containers'><p>{appointment.priority}</p></div>
+                    <div className='card-alignment-containers'><p>{appointment.pet}</p></div>
+                    <div className='card-alignment-containers'><p>{appointment.date}</p></div>
+                    <div className='card-alignment-containers'><p>{appointment.time}</p></div>
+                    <div className='card-alignment-containers'><p>{appointment.proccedure}</p></div>
+                    <div className='card-alignment-containers'><p>{appointment.medic}</p></div>
                 </div>
             ))}
             
