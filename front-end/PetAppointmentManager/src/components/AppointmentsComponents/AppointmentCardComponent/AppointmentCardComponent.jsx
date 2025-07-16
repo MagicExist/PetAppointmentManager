@@ -22,7 +22,7 @@ export default function AppointmentCardComponent(){
 
     return(
         <div className="card-container">
-            <div className="card-header card-alignment">
+            <div className="card-header card-alignment mt-3">
                 <div className='card-alignment-containers'><p>Priority</p></div>
                 <div className='card-alignment-containers'><p>Pet</p></div>
                 <div className='card-alignment-containers'><p>Date</p></div>
@@ -31,7 +31,7 @@ export default function AppointmentCardComponent(){
                 <div className='card-alignment-containers'><p>Medic</p></div>
             </div>
             {appointmentList.map((appointment,index) => (
-                <div className="card-body card-alignment" key={index}>
+                <div className="card-body card-alignment mb-3" key={index}>
                     <div className='card-alignment-containers'><p>{appointment.priority}</p></div>
                     <div className='card-alignment-containers'><p>{appointment.pet}</p></div>
                     <div className='card-alignment-containers'><p>{appointment.date}</p></div>
