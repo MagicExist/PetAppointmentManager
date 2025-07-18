@@ -49,6 +49,7 @@ export default function PetCardComponent(){
                     <div className='card-alignment-containers'><p>{pet.race}</p></div>
                     <div className='card-alignment-containers'><p>{pet.age}</p></div>
                     <div className='card-alignment-containers'>
+                        <button className='btn btn-primary me-2'>Edit</button>
                         <button onClick={()=> {DeletePetHandle(pet.id)}} className='btn btn-danger'>Delete</button>
                     </div>
                 </div>
