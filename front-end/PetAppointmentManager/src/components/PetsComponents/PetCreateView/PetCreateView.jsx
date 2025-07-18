@@ -31,22 +31,23 @@ export default function PetCreateView(){
     }
 
     return(
-        <div className="container mainContainer bg-secondary d-flex align-items-center">
-            <form onSubmit={CreatePet} method='post' className='d-flex align-content-center justify-content-center w-100'>
-                <div className="row p-4 flex-column gy-4 w-100 bg-primary">
-                    <div className='col mt-0 d-flex flex-column align-items-center'>
-                        <label htmlFor="">Name</label>
-                        <input value={petName} onChange={(e) => {setPetName(e.target.value)}}/>
+        <div className="container mainContainer d-flex flex-column justify-content-center align-items-center">
+            <h1 className='text-white'>Pet Create</h1>
+            <form onSubmit={CreatePet} method='post' className='mt-2 h-75 d-flex align-content-center justify-content-center w-100'>
+                <div className="row p-4 flex-column w-50 form-container rounded-4 text-white fs-5">
+                    <div className='col mt-0 d-flex flex-column align-items-center justify-content-center'>
+                        <label htmlFor="inputPetName">Name</label>
+                        <input placeholder='Pet Name' className='form-control w-25' id='inputPetName' value={petName} onChange={(e) => {setPetName(e.target.value)}}/>
                     </div>
-                    <div className='col d-flex flex-column align-items-center'>
-                        <label htmlFor="">Age</label>
-                        <input value={petAge} onChange={(e) => {setPetAge(e.target.value)}}/>
+                    <div className='col d-flex flex-column align-items-center justify-content-center'>
+                        <label htmlFor="inputPetAge">Age</label>
+                        <input placeholder='Pet Age' className='form-control w-25' id='inputPetAge' value={petAge} onChange={(e) => {setPetAge(e.target.value)}}/>
                     </div>
-                    <div className='col d-flex flex-column align-items-center'>
-                        <label htmlFor="">Race</label>
-                        <input value={petRace} onChange={(e) => {setPetRace(e.target.value)}}/>
+                    <div className='col d-flex flex-column align-items-center justify-content-center'>
+                        <label htmlFor="inputPetRace">Race</label>
+                        <input placeholder='Pet Race' className='form-control w-25' id='inputPetRace' value={petRace} onChange={(e) => {setPetRace(e.target.value)}}/>
                     </div>
-                    <div className='col d-flex flex-column align-items-center'>
+                    <div className='col d-flex flex-column align-items-center justify-content-center'>
                         <button type='submit' className='btn btn-success'>Create</button>
                     </div>
                 </div>
