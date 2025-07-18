@@ -4,6 +4,7 @@ import AppointmentReadView from './components/AppointmentsComponents/Appointment
 import NavBarComponent from './components/NavBarComponent/NavBarComponent'
 import PetReadView from './components/PetsComponents/PetReadView/PetReadView';
 import PetCreateView from './components/PetsComponents/PetCreateView/PetCreateView';
+import PetEditView from './components/PetsComponents/PetEditView/PetEditView';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<AppointmentReadView/>}/>
         <Route path='/pet' element={<PetReadView/>}/>
         <Route path='/pet/create' element={<PetCreateView/>}/>
+        <Route path='/pet/edit/:id' element={<PetEditView/>}/>
       </Routes>
     </Router>
   )
