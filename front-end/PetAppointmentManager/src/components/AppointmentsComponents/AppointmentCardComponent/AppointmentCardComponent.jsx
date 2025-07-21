@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import './AppointmentCardComponent.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export default function AppointmentCardComponent(){
 
     const apiUrl = import.meta.env.VITE_API_URL
+    const navigate = useNavigate()
 
     const [appointmentList,setAppointmentList] = useState([])
 
@@ -31,6 +33,17 @@ export default function AppointmentCardComponent(){
             })
     }
 
+    const EditHandle = (id,priority,pet_id,date,time,proccedure,medic)=>{
+        navigate(`/appointment/edit/${id}`,{state:{
+            priority:priority,
+            pet_id:pet_id,
+            date:date,
+            time:time,
+            proccedure:proccedure,
+            medic:medic
+        }})
+    }
+
     return(
         <div className="card-container">
             <div className="card-header card-alignment mt-3">
@@ -51,7 +64,7 @@ export default function AppointmentCardComponent(){
                     <div className='card-alignment-containers'><p>{appointment.proccedure}</p></div>
                     <div className='card-alignment-containers'><p>{appointment.medic}</p></div>
                     <div className='card-alignment-containers'>
-                        <button className='btn btn-primary me-2'>Edit</button>
+                        <button onClick={()=>{EditHandle(appointment.id,appointment.priority,appointment.pet,appointment.date,appointment.time,appointment.proccedure,appointment.medic)}} className='btn btn-primary me-2'>Edit</button>
                         <button onClick={()=>{DeleteHandle(appointment.id)}} className='btn btn-danger'>Delete</button>
                     </div>
                 </div>

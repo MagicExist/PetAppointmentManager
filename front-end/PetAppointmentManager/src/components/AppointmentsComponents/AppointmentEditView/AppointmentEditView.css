@@ -1,0 +1,11 @@
+.mainContainer{
+    height: 90vh;
+}
+
+.form-container{
+     background-color: rgb(26, 26, 27);
+}
+
+.editBtn{
+    width:5rem;
+}

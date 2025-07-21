@@ -37,7 +37,7 @@ export default function PetEditView(){
     return(
         <div className="container mainContainer d-flex flex-column justify-content-center align-items-center">
             <h1 className='text-white'>Pet Edit</h1>
-            <form onSubmit={EditPet} method='post' className='mt-2 h-75 d-flex align-content-center justify-content-center w-100'>
+            <form onSubmit={EditPet} method='put' className='mt-2 h-75 d-flex align-content-center justify-content-center w-100'>
                 <div className="row p-4 flex-column w-50 form-container rounded-4 text-white fs-5">
                     <div className='col mt-0 d-flex flex-column align-items-center justify-content-center'>
                         <label htmlFor="inputPetName">Name</label>
