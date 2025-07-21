@@ -65,7 +65,6 @@ This project is built with:
 3. 🔐 Environment Variables
 Create a `.env` file in the **front-end/PetAppointmentManager** folder with the following content:
 ```
-cd PetAppointmentManager
 VITE_API_URL=http://127.0.0.1:8000/api
 #This variable is used to connect the React frontend to the Django backend API.
 ```
