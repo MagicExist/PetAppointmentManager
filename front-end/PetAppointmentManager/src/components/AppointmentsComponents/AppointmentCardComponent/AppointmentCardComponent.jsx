@@ -9,6 +9,17 @@ export default function AppointmentCardComponent(){
     const navigate = useNavigate()
 
     const [appointmentList,setAppointmentList] = useState([])
+    const [petList,setPetList] = useState([])
+
+    useEffect(()=>{
+        axios.get(`${apiUrl}/pet/`)
+        .then(response => {
+            setPetList(response.data)
+        })
+        .catch(err => {
+            console.error(err)
+        })
+    },[])
 
     useEffect(()=>{
         axios.get(`${apiUrl}/appointment/`)
@@ -44,6 +55,16 @@ export default function AppointmentCardComponent(){
         }})
     }
 
+    const PetRender = (currentPetId) => {
+        const pet = petList.find(p => p.id === currentPetId);
+
+        if (pet) {
+            return <p>{pet.name}</p>;
+        } else {
+            return <p>Pet no encontrado</p>;
+        }
+    }
+
     return(
         <div className="card-container">
             <div className="card-header card-alignment mt-3">
@@ -58,7 +79,7 @@ export default function AppointmentCardComponent(){
             {appointmentList.map((appointment,index) => (
                 <div className="card-body card-alignment mb-3" key={index}>
                     <div className='card-alignment-containers'><p>{appointment.priority}</p></div>
-                    <div className='card-alignment-containers'><p>{appointment.pet}</p></div>
+                    <div className='card-alignment-containers'>{PetRender(appointment.pet)}</div>
                     <div className='card-alignment-containers'><p>{appointment.date}</p></div>
                     <div className='card-alignment-containers'><p>{appointment.time}</p></div>
                     <div className='card-alignment-containers'><p>{appointment.proccedure}</p></div>
