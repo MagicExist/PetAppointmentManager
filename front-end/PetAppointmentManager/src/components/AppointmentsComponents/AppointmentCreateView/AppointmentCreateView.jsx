@@ -59,7 +59,7 @@ export default function AppointmentCreateView(){
         const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
         const dateTimeValidation = appointmentList.some((appointment)=>{ 
             const appointmentTime = appointment.time.slice(0,5); // "HH:MM"
-            return appointmentTime === time && appointment.date === date;})
+            return appointmentTime === time && appointment.date === date && appointment.medic.toLowerCase() === medic.toLowerCase()})
 
         console.log(dateTimeValidation)
         if(priority === ''){
@@ -100,7 +100,7 @@ export default function AppointmentCreateView(){
         }
 
         if(dateTimeValidation){
-            return "There is already an appointment scheduled at this date and time."
+            return "There is already an appointment scheduled at this medic,date and time."
         }
         
     }
