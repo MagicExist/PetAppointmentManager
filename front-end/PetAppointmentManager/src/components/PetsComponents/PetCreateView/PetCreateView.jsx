@@ -13,8 +13,40 @@ export default function PetCreateView(){
 
     const apiUrl = import.meta.env.VITE_API_URL
 
+    const FormValidations = () =>{
+        const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
+
+        if(petName === ''){
+            return "Pet name is required"
+        }
+        if(!regex.test(petName)){
+            return "Name must contain only letters and spaces.";
+        }
+
+        if(petAge === ''){
+            return "Pet age is required"
+        }
+        if(isNaN(petAge) || petAge <= 0 || petAge >= 100){
+            return "Age value it's not valid"
+        }
+
+        if(petRace === ''){
+            return "Pet race is required"
+        }
+        if(!regex.test(petRace)){
+            return "Race must contain only letters and spaces.";
+        }
+    }
+
     const CreatePet = (e) => {
         e.preventDefault()
+
+        const validationError = FormValidations()
+
+        if (validationError) {
+            alert(validationError);
+            return;
+        }
 
         axios.post(`${apiUrl}/pet/`,{
             name: petName,
