@@ -64,7 +64,7 @@ export default function AppointmentEditView(){
         const dateTimeValidation = appointmentList.some((appointment)=>{ 
             const appointmentTime = appointment.time.slice(0,5); // "HH:MM"
             
-            return appointmentTime === timeState && appointment.date === dateState && appointment.medic === medicState})
+            return appointmentTime === timeState && appointment.date === dateState && appointment.medic.toLowerCase() === medicState.toLowerCase()})
 
         console.log(dateTimeValidation)
         if(priorityState === ''){
