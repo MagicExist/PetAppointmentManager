@@ -12,10 +12,13 @@ export default function AppointmentCreateView(){
     const [petId,setPetId] = useState('')
 
     const [petList,setPetList] = useState([])
+    const [appointmentList,setAppointmentList] = useState([])
 
     const navigate = useNavigate()
 
     const apiUrl = import.meta.env.VITE_API_URL
+
+
 
     useEffect(()=>{
         axios.get(`${apiUrl}/pet/`)
@@ -27,13 +30,92 @@ export default function AppointmentCreateView(){
         })
     },[])
 
+    useEffect(()=>{
+        axios.get(`${apiUrl}/appointment/`)
+        .then(response => {
+            console.log(response.data)
+            setAppointmentList(response.data)
+        })
+        .catch(err => {
+            console.error(err)
+        })
+    },[])
+
+
+    const isDateInFutureOrToday = (inputDate) => {
+
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    const dateParts = inputDate.split('-');
+    const localDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+    localDate.setHours(0,0,0,0);
+
+
+    return localDate >= today;
+    };
+
+    const FormValidations = () =>{
+        const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
+        const dateTimeValidation = appointmentList.some((appointment)=>{ 
+            const appointmentTime = appointment.time.slice(0,5); // "HH:MM"
+            return appointmentTime === time && appointment.date === date;})
+
+        console.log(dateTimeValidation)
+        if(priority === ''){
+            return "Priority is required"
+        }
+        if(!regex.test(priority)){
+            return "Priority must contain only letters and spaces.";
+        }
+
+        if(proccedure === ''){
+            return "Proccedure is required"
+        }
+        if(!regex.test(proccedure)){
+            return "Proccedure must contain only letters and spaces.";
+        }
+
+        if(medic === ''){
+            return "Medic is required"
+        }
+        if(!regex.test(medic)){
+            return "Medic must contain only letters and spaces.";
+        }
+        
+        if(date === ''){
+            return "Date is required"
+        }
+
+        if(time === ''){
+            return "Time is required"
+        }
+        
+        if (petId === "") {
+            return "You must select a pet"
+        }
+
+        if(!isDateInFutureOrToday(date)){
+            return "You must select a valid date"
+        }
+
+        if(dateTimeValidation){
+            return "There is already an appointment scheduled at this date and time."
+        }
+        
+    }
+
     const CreateAppointment = (e) => {
         e.preventDefault()
 
-        if (petId === "") {
-            alert("You must select a race")
+        const validationError = FormValidations()
+
+        if(validationError){
+            alert(validationError)
             return
         }
+
+        
 
         axios.post(`${apiUrl}/appointment/`,{
             priority: priority,
