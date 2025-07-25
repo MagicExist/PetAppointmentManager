@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import './App.css'
 import AppointmentReadView from './components/AppointmentsComponents/AppointmentReadView/AppointmentReadView'
 import NavBarComponent from './components/NavBarComponent/NavBarComponent'
@@ -7,20 +7,37 @@ import PetCreateView from './components/PetsComponents/PetCreateView/PetCreateVi
 import PetEditView from './components/PetsComponents/PetEditView/PetEditView';
 import AppointmentCreateView from './components/AppointmentsComponents/AppointmentCreateView/AppointmentCreateView';
 import AppointmentEditView from './components/AppointmentsComponents/AppointmentEditView/AppointmentEditView';
+import LoginView from './components/LoginComponents/LoginView/LoginView';
+
+const isAuthenticated = () => {
+  return !!localStorage.getItem("token");
+}
+
+const PrivateRoute = () => {
+  return isAuthenticated() ? (
+    <>
+      <NavBarComponent/>
+      <Outlet/>
+    </>
+  ) : <Navigate to="/login" />;
+};
 
 function App() {
 
   return (
     <Router>
-      <NavBarComponent/>
       <Routes>
-        <Route path='/' element={<AppointmentReadView/>}/>
-        <Route path='/appointment/create' element={<AppointmentCreateView/>}/>
-        <Route path='/appointment/edit/:id' element={<AppointmentEditView/>}/>
+        <Route path='/login' element={<LoginView/>}/>
 
-        <Route path='/pet' element={<PetReadView/>}/>
-        <Route path='/pet/create' element={<PetCreateView/>}/>
-        <Route path='/pet/edit/:id' element={<PetEditView/>}/>
+        <Route element={<PrivateRoute/>}>
+          <Route path='/' element={<AppointmentReadView/>}/>
+          <Route path='/appointment/create' element={<AppointmentCreateView/>}/>
+          <Route path='/appointment/edit/:id' element={<AppointmentEditView/>}/>
+
+          <Route path='/pet' element={<PetReadView/>}/>
+          <Route path='/pet/create' element={<PetCreateView/>}/>
+          <Route path='/pet/edit/:id' element={<PetEditView/>}/>
+        </Route>
       </Routes>
     </Router>
   )
