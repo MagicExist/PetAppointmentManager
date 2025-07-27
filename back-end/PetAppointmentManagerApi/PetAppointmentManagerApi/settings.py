@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-&kbe7mbsz&zq4f(ovmk(ht7%psd=bkj8v(zb05p0wddfs50x_n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['petappointmentmanager.onrender.com']
+ALLOWED_HOSTS = ['petappointmentmanager-production.up.railway.app']
 
 
 # Application definition
