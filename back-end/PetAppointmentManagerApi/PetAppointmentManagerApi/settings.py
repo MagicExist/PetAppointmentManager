@@ -77,7 +77,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'PetAppointmentManagerApi.PetAppointmentManagerApi.urls'
+ROOT_URLCONF = 'PetAppointmentManagerApi.urls'
 
 TEMPLATES = [
     {
