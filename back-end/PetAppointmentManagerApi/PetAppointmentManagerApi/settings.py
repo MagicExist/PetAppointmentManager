@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-&kbe7mbsz&zq4f(ovmk(ht7%psd=bkj8v(zb05p0wddfs50x_n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['petappointmentmanager.onrender.com']
 
 
 # Application definition
@@ -64,7 +64,7 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -77,7 +77,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'PetAppointmentManagerApi.urls'
+ROOT_URLCONF = 'PetAppointmentManagerApi.PetAppointmentManagerApi.urls'
 
 TEMPLATES = [
     {
