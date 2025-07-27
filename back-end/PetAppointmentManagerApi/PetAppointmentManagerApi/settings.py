@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'PetAppointmentManagerApi.Core',
+    'Core.apps.CoreConfig',
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt',
