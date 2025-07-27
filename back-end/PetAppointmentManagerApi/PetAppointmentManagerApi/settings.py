@@ -64,7 +64,9 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
 
-CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "https://front-production-1fcc.up.railway.app",
+]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
