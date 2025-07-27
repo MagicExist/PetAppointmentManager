@@ -1,0 +1,12 @@
+# Ignorar archivos innecesarios, pero NO todo
+__pycache__/
+*.py[cod]
+*.pyo
+*.log
+*.sqlite3
+*.env
+venv/
+.env/
+
+# Django migrations (opcional si quieres ignorar)
+*/migrations/__pycache__/
