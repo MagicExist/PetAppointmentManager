@@ -1,0 +1,18 @@
+
+.mainContainer{
+    height: 100vh;
+}
+
+.rowContainer{
+    height: 80%;
+    background-color: #1a1a1b;
+}
+
+.loginLabel{
+    color: rgb(219, 219, 219);
+}
+
+.loginBtn{
+    width: 6rem;
+    height: 2.5rem;
+}
