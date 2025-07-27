@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: petappointmentmanager
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn PetAppointmentManagerApi.PetAppointmentManagerApi.wsgi
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: petappointmentmanager-db
+          property: connectionString
+    postdeploy:
+      - python manage.py migrate
