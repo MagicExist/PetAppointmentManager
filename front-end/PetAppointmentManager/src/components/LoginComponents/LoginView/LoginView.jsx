@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './LoginView.css'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 
 export default function LoginView(){
@@ -62,6 +62,7 @@ export default function LoginView(){
                             <label htmlFor='inputPassword' className='mb-2 fs-5 loginLabel'>Password</label>
                             <input onChange={(e)=>{setPassword(e.target.value)}} value={passwordState} type='password' placeholder='Password' id='inputPassword' className='form-control w-25'/>
                         </div>
+                        <Link className='mt-2' to={"/register"}>Create Account</Link>
                         <button type='submit' className='btn btn-primary loginBtn mt-4'>Login</button>
                     </form>
                 </div>
